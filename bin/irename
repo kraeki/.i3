@@ -1,0 +1,4 @@
+#!/bin/sh
+
+[ -z $1 ] && echo add name as an arguemnt >&2 && exit
+i3-msg rename workspace to $1 > /dev/null

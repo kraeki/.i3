@@ -1,0 +1,7 @@
+#!/bin/sh
+
+tmpfile=/tmp/.i3_lock.png
+
+scrot "$tmpfile"
+convert "$tmpfile" -blur 0x6 "$tmpfile"
+i3lock --dpms -i "$tmpfile" -t
