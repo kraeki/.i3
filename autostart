@@ -1,11 +1,10 @@
 #!/bin/sh
 
-# Support switching keyboard layouts using both shifts at same time
 setxkbmap -layout us,ch -option grp:shifts_toggle &
-
-# Change speed of keyboard
 xset r rate 200 20 &
 
 # Mouse speed
-xinput set-prop "USB Optical Mouse" "Device Accel Constant Deceleration" 0.3
-xinput --set-button-map "USB Optical Mouse" 1 2 3 5 4
+xset m 3/2 4 &
+
+# speed second mouse logitech usb:
+xinput set-prop "Logitech USB Optical Mouse" "Device Accel Constant Deceleration" 0.3

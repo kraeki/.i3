@@ -1,12 +1,18 @@
 #!/bin/sh
-xrandr --setprovideroutputsource 1 0
-xrandr --setprovideroutputsource 2 0
 
-xrandr --output DVI-1-0 --mode 1680x1050 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output eDP1 --off --output DVI-2-1 --mode 1680x1050 --pos 1680x0 --rotate normal --output DP2 --off
+. `dirname $0`/monitors
 
-xrandr --dpi 96
+# first enable second monitor right of laptop
+xrandr --output VIRTUAL1 --off --output $m1_interface --primary --mode $m1_resolution --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP1-3 --off --output $m2_interface --mode $m2_resolution --right-of $m1_interface --rotate normal --output $m3_interface --off --output DP2 --off
+
+# set second monitor as primary, turn off laptop monitor
+xrandr --output VIRTUAL1 --off --output $m1_interface --off --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP1-3 --off --output $m2_interface --primary --mode $m2_resolution --pos 0x0 --rotate normal --output $m3_interface --off --output DP2 --off
+
+# enable second and third monitor
+xrandr --output VIRTUAL1 --off --output $m1_interface --off --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP1-3 --off --output $m2_interface --primary --mode $m2_resolution --pos 0x0 --rotate normal --output $m3_interface --mode $m2_resolution --right-of $m2_interface --rotate normal --output DP2 --off
+
+# restart i3
 i3-msg restart
 
-# mouse speed
-xinput set-prop "USB Optical Mouse" "Device Accel Constant Deceleration" 0.3
-xinput --set-button-map "USB Optical Mouse" 1 2 3 5 4
+# reset background picture to fit dimensions
+feh --randomize --bg-fill ~/.i3/backgrounds/*

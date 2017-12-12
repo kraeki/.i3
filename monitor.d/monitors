@@ -1,0 +1,30 @@
+#
+#                      +----------------+ +----------------+ +----------------+
+#                      |                | |                | |                |
+#     +------------+   |                | |                | |                |
+#     |            |   |    Monitor2    | |    Monitor3    | |    Monitor4    |
+#     |   Laptop1  |   |      DP2       | |      DP1-2     | |      DP1-1     |
+#     |    eDP1    |   |                | |                | |                |
+#     |            |   +----------------+ |                | |                |
+#     +------------+       1920x1080      +----------------+ +----------------+
+#        1366x768                              2560x1440          2560x1440
+
+l1_resolution=1366x768
+m2_resolution=1920x1080
+m3_resolution=2560x1440
+m4_resolution=2560x1440
+l1_interface=eDP1
+m2_interface=DP2
+m3_interface=DP1-2
+m4_interface=DP1-1
+
+turnoff_unusd="--output VIRTUAL1 --off --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP1-3 --off"
+
+fix_i3_issues()
+{
+  # restart i3
+  i3-msg restart
+
+  # reset background picture to fit dimensions
+  feh --randomize --bg-fill ~/.i3/backgrounds/*
+}

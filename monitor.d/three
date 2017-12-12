@@ -1,0 +1,31 @@
+#!/bin/sh
+
+. `dirname $0`/monitors
+
+set -x
+# first enable second monitor
+xrandr  $turnoff_unusd \
+  --output $l1_interface --primary --mode $l1_resolution --pos 0x0 --rotate normal \
+  --output $m2_interface --mode $m2_resolution --right-of $l1_interface --rotate normal \
+  --output $m3_interface --off \
+  --output $m4_interface --off
+
+# turn of laptop, enable second primary and enable third
+xrandr  $turnoff_unusd \
+  --output $l1_interface --off \
+  --output $m2_interface --primary --mode $m2_resolution --pos 0x0 --rotate normal \
+  --output $m3_interface --mode $m3_resolution --right-of $m2_interface --rotate normal \
+  --output $m4_interface --off
+
+# turn of laptop, enable second primary and enable third and fourth
+xrandr  $turnoff_unusd \
+  --output $l1_interface --off \
+  --output $m2_interface --primary --mode $m2_resolution --pos 0x0 --rotate normal \
+  --output $m3_interface --mode $m3_resolution --right-of $m2_interface --rotate normal \
+  --output $m4_interface --mode $m4_resolution --right-of $m3_interface --rotate normal
+
+fix_i3_issues
+set +x
+
+
+#xrandr  $turnoff_unusd --output $l1_interface --primary --mode $l1_resolution --pos 0x0 --rotate normal --output $m2_interface --mode $m2_resolution --right-of $l1_interface --rotate normal --output $m3_interface --off --output $m4_interface --off
