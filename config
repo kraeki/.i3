@@ -23,6 +23,9 @@ bindsym $mod+d exec --no-startup-id rofi -lines 10 -show run
 # Support switching of windows using alt-tab
 bindsym $mod+Tab exec rofi -lines 20 -show window
 
+# Support of pass
+bindsym $mod+p exec $HOME/.i3/bin/rofi_pass.sh
+
 # Change focus
 # default keys altered to match those of vim
 bindsym $mod+h focus left
