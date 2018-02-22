@@ -16,12 +16,14 @@ bindsym $mod+Return exec i3-sensible-terminal
 # Kill focused window
 bindsym $mod+Shift+q kill
 
-# Start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
+# Start rofi (dmenu replacement)
 bindsym $mod+d exec --no-startup-id rofi -lines 10 -show run
 
 # Support switching of windows using alt-tab
 bindsym $mod+Tab exec rofi -lines 20 -show window
+
+# Start ranger a ncurses file explorer
+bindsym $mod+g exec --no-startup-id i3-sensible-terminal -x ranger
 
 # Support of pass
 bindsym $mod+p exec $HOME/.i3/bin/rofi_pass.sh
