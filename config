@@ -161,8 +161,8 @@ bindsym $mod+b exec i3lock -c 15dc00 --dpms
 
 # Configure monitors
 bindsym $mod+F1 exec --no-startup-id "~/.i3/monitor.d/single"
-bindsym $mod+F2 exec --no-startup-id "~/.i3/monitor.d/two"
-bindsym $mod+F3 exec --no-startup-id "~/.i3/monitor.d/three"
+bindsym $mod+F2 exec --no-startup-id "~/.i3/monitor.d/home"
+bindsym $mod+F3 exec --no-startup-id "~/.i3/monitor.d/work"
 
 # Set background image
 exec --no-startup-id feh --randomize --bg-fill ~/.i3/backgrounds/*
