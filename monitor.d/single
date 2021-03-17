@@ -1,12 +1,2 @@
 #!/bin/sh
-
-. `dirname $0`/monitors
-
-# first enable second monitor
-xrandr  $turnoff_unusd \
-  --output $l1_interface --primary --mode $l1_resolution --pos 0x0 --rotate normal \
-  --output $m2_interface --off \
-  --output $m3_interface --off \
-  --output $m4_interface --off
-
-fix_i3_issues
+xrandr --output DP-2-1 --off --output DP-2-2 --off --output DP-2-3 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-2 --off --output HDMI-1 --off --output DP-2 --off --output DP-1 --off
